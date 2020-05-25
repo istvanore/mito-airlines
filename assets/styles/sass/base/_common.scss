@@ -1,0 +1,115 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: url("/images/map.svg");
+  background-size: cover;
+  background-position: center center;
+  color: #000000;
+  font-family: "Roboto", sans-serif;
+  min-height: 100vh;
+  position: relative;
+  background-color: #f2f2f2;
+}
+
+.page-header {
+  background-color: $color-blue;
+  color: #ffffff;
+  padding: 12px 15px;
+  display: flex;
+  align-items: center;
+  .logo {
+    margin-right: 15px;
+  }
+  h1 {
+    font-size: 17px;
+    text-transform: uppercase;
+    font-weight: normal;
+    margin: 0;
+  }
+}
+
+.form-control,
+.multiselect__tags {
+  width: 100%;
+  width: 250px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #919191;
+  border-radius: 2px;
+  padding: 0 10px;
+  font-size: 16px;
+}
+.multiselect {
+  &__tags {
+    padding-top: 14px !important;
+    border: 1px solid $color-grey !important;
+    border-radius: 2px !important;
+  }
+  &__option--highlight {
+    background: $color-magenta!important;
+  }
+  &__placeholder {
+    font-size: 16px;
+    color: $color-grey !important;
+  }
+}
+.errorBorder{
+    .multiselect__tags, &.form-control{
+        border: 2px solid $color-magenta !important;
+    }
+}
+
+.vdp-datepicker {
+  input {
+    background-image: url("/images/calendar.svg");
+    background-position: right 10px top 12px;
+    background-repeat: no-repeat;
+  }
+}
+
+.input-error{
+    margin-bottom: 0;
+    color: $color-magenta;
+    padding-left: 30px;
+    background-image: url("/images/warning.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+    font-style: 13px;
+}
+
+.btn {
+  border-radius: 3px;
+  text-transform: uppercase;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+
+  display: inline-block;
+  cursor: pointer;
+  &[disabled] {
+    background-color: $color-grey;
+    cursor: not-allowed;
+  }
+}
+.btn-search {
+  background-color: $color-lightblue;
+  font-size: 18px;
+  width: 230px;
+  height: 50px;
+}
+.btn-pay {
+  background-color: $color-magenta;
+  font-size: 16px;
+  width: 100%;
+  font-weight: bold;
+  padding: 18px;
+}
+
+.text-center {
+  text-align: center;
+}

@@ -1,0 +1,29 @@
+
+{
+    "liveSassCompile.settings.formats" : [
+        // This is Default.
+        {
+            "format": "expanded",
+            "extensionName": ".css",
+            "savePath": "~/../css"
+        },
+        // You can add more
+        {
+            "format": "compressed",
+            "extensionName": ".min.css",
+            "savePath": "~/../css"
+        }
+    ],
+    "liveSassCompile.settings.generateMap" : true,
+    "liveSassCompile.settings.excludeList": [ 
+        "**/node_modules/**",
+        ".vscode/**",    
+        ".nuxt/**",       
+    ],
+    "window.zoomLevel": 0,
+    "workbench.sideBar.location": "left",
+    "workbench.activityBar.visible": true,
+    "workbench.statusBar.visible": true,
+    "editor.minimap.enabled": false,
+    "breadcrumbs.enabled": true
+    }
