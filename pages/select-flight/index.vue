@@ -56,14 +56,16 @@
         <div class="tickets-table__wrapper">
           <div class="tickets-table__header">
             <h2>Outbound</h2>
-            <span class="tickets-table__header__station">{{ departureStation.shortName }}</span>
-            <img src="/images/arrow.svg">
-            <span class="tickets-table__header__station">{{ arrivalStation.shortName }}</span>
+            <div>
+              <span class="tickets-table__header__station">{{ departureStation.shortName }}</span>
+              <img src="/images/arrow.svg">
+              <span class="tickets-table__header__station">{{ arrivalStation.shortName }}</span>
+            </div>
           </div>
           <div class="tickets-table__date">
             {{ selectedFlight.outboundDate | longDate }}
           </div>
-          <div v-if="!loadingTickets">
+          <div v-if="!loadingTickets" class="tickets-table__outer">
             <div v-if="availableTickets.length > 0" class="tickets-table">
               <div class="table-row__ticket-level">
                 <div />
@@ -111,13 +113,15 @@
         <div class="tickets-table__wrapper">
           <div class="tickets-table__header">
             <h2>Inbound</h2>
-            <span class="tickets-table__header__station">{{ arrivalStation.shortName }}</span>
-            <img src="/images/arrow.svg">
-            <span class="tickets-table__header__station">{{ departureStation.shortName }}</span>
+            <div>
+              <span class="tickets-table__header__station">{{ arrivalStation.shortName }}</span>
+              <img src="/images/arrow.svg">
+              <span class="tickets-table__header__station">{{ departureStation.shortName }}</span>
+            </div>
           </div>
           <div v-if="returnSelected">
-            <div v-if="!loadingReturnTickets">
-              <div v-if="availableReturnTickets.length > 0">
+            <div v-if="!loadingReturnTickets" class="tickets-table__outer">
+              <div v-if="availableReturnTickets.length > 0" class="tickets-table">
                 <div class="tickets-table__date">
                   {{ selectedFlight.inboundDate | longDate }}
                 </div>
