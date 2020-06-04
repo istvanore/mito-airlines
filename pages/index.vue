@@ -15,6 +15,8 @@
               track-by="iata"
               label="shortName"
               placeholder="Origin"
+              select-label=""
+              deselect-label=""
               :options="flightList"
               :searchable="true"
               :allow-empty="false"
@@ -35,6 +37,8 @@
               track-by="iata"
               label="shortName"
               placeholder="Destination"
+              select-label=""
+              deselect-label=""
               :options="selectedConnections"
               :searchable="true"
               :class="{errorBorder:errors.arrivalStation}"
@@ -122,6 +126,13 @@ export default {
       }
     }
   },
+  mounted () {
+    if (localStorage.getItem('selectedFlight')) {
+      const localStorageData = localStorage.getItem('selectedFlight')
+      this.selectedFlight = JSON.parse(localStorageData)
+      this.$store.dispatch('setConnections', this.selectedFlight.departureStation)
+    }
+  },
   methods: {
     selectConnection () {
       this.errors.departureStation = false
@@ -141,9 +152,13 @@ export default {
     submitForm () {
       this.validate()
       if (this.formValid) {
+        localStorage.setItem('selectedFlight', JSON.stringify(this.selectedFlight))
         this.$store.dispatch('availableTickets', this.selectedFlight)
         if (this.selectedFlight.inboundDate) {
           this.$store.dispatch('availableReturnTickets', this.selectedFlight)
+          this.$store.dispatch('returnSelected', true)
+        } else {
+          this.$store.dispatch('returnSelected', false)
         }
         this.$router.push('select-flight')
       }

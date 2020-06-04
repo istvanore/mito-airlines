@@ -40,7 +40,6 @@ body {
 .form-control,
 .multiselect__tags {
   width: 100%;
-  width: 250px;
   height: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -157,6 +156,19 @@ body {
   margin-bottom: 30px;
 }
 
+@media (max-width: 767px) {
+  .input-container {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  .home-form {
+    top: 0;
+    left: auto;
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+}
+
 .page-header__info {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -271,11 +283,26 @@ body {
   color: #343434;
 }
 
-.table-row {
+.table-row, .table-row__ticket-level {
+  border-top: 1px solid #e5e5e5;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 3fr;
       grid-template-columns: 1fr 3fr;
+}
+
+.table-row__ticket-level .tickets .ticket {
+  padding: 10px 10px 0 10px;
+  position: relative;
+  z-index: 5;
+  margin-bottom: -15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.table-row__ticket-level + div .table-row, .table-row__ticket-level + div .table-row__ticket-level {
+  border-top: none;
 }
 
 .flight-time {
@@ -286,7 +313,6 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-top: 1px solid #e5e5e5;
 }
 
 .flight-time img {
@@ -302,7 +328,6 @@ body {
 
 .tickets .ticket {
   padding: 25px 15px;
-  border-top: 1px solid #e5e5e5;
   background-color: #fff;
   text-align: center;
 }
@@ -449,5 +474,75 @@ body {
 .return-form .btn-search {
   width: auto;
   padding: 15px;
+}
+
+.ticket-modal {
+  background-color: #fff;
+  max-width: 500px;
+  margin: 10vw auto 0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.ticket-modal__wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 99999999;
+}
+
+.ticket-modal__header {
+  padding: 15px 30px;
+  background-color: #F2F2F2;
+  text-transform: uppercase;
+  color: #06038D;
+}
+
+.ticket-modal__body {
+  padding: 10px 15px 0;
+}
+
+.ticket-modal__body .ticket-info {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+.ticket-modal__body .ticket-info .ticket-summary__body__divider {
+  display: none;
+}
+
+.ticket-modal__footer {
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 20px 30px 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.ticket-modal__footer__price {
+  color: #06038D;
+  margin-right: auto;
+}
+
+.ticket-modal__footer__reset {
+  color: #C6007E;
+  font-size: 12px;
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.ticket-modal__footer__reset:hover {
+  text-decoration: none;
 }
 /*# sourceMappingURL=style.css.map */

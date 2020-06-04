@@ -24,7 +24,10 @@ const createStore = () => {
       arrivalStation: {},
       selectedConnections: [],
       availableTickets: [],
-      availableReturnTickets: []
+      availableReturnTickets: [],
+      loadingTickets: false,
+      loadingReturnTickets: false,
+      returnSelected: false
     },
     mutations: {
       setFlights (state, payload) {
@@ -46,12 +49,16 @@ const createStore = () => {
             }
           })
         })
+        state.loadingTickets = true
+        state.loadingReturnTickets = true
       },
       availableTickets (state, payload) {
         state.availableTickets = payload
+        state.loadingTickets = false
       },
       availableReturnTickets (state, payload) {
         state.availableReturnTickets = payload
+        state.loadingReturnTickets = false
       },
       setFlightInfo (state, payload) {
         state.selectedFlight = payload
@@ -65,6 +72,9 @@ const createStore = () => {
       clearTickets (state) {
         state.availableTickets = []
         state.availableReturnTickets = []
+      },
+      returnSelected (state, payload) {
+        state.returnSelected = payload
       }
     },
     getters: {
@@ -88,6 +98,15 @@ const createStore = () => {
       },
       departureStation (state) {
         return state.departureStation
+      },
+      loadingTickets (state) {
+        return state.loadingTickets
+      },
+      loadingReturnTickets (state) {
+        return state.loadingReturnTickets
+      },
+      returnSelected (state) {
+        return state.returnSelected
       }
     },
     actions: {
@@ -124,6 +143,13 @@ const createStore = () => {
             context.commit('availableReturnTickets', response.data)
           })
           .catch(e => context.error(e))
+      },
+      returnSelected (context, payload) {
+        if (payload) {
+          context.commit('returnSelected', true)
+        } else {
+          context.commit('returnSelected', false)
+        }
       }
 
     }

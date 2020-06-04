@@ -53,7 +53,6 @@
   padding: 0 15px;
 }
 .tickets-table {
-  
   &__wrapper {
     background-color: #fff;
     @include list-shadow;
@@ -88,14 +87,30 @@
   }
 }
 .table-row {
+  border-top: 1px solid #e5e5e5;
   display: grid;
   grid-template-columns: 1fr 3fr;
+  &__ticket-level{
+    @extend .table-row;
+    .tickets .ticket{
+      padding: 10px 10px 0 10px;
+      position: relative;
+      z-index: 5;
+      margin-bottom: -15px;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 12px;
+    }
+    &+div .table-row{
+      border-top: none;
+    }
+  }
 }
 .flight-time {
   padding: 15px;
   display: flex;
   align-items: center;
-  border-top: 1px solid #e5e5e5;
+  
   img {
     margin: 0 8px;
   }
@@ -105,7 +120,7 @@
   grid-template-columns: 1fr 1fr 1fr;
   .ticket {
     padding: 25px 15px;
-    border-top: 1px solid #e5e5e5;
+    
     background-color: #fff;
     text-align: center;
     &:nth-child(2) {
@@ -217,4 +232,60 @@
         width: auto;
         padding: 15px;
     }
+}
+
+
+.ticket-modal{
+  background-color: #fff;
+  max-width: 500px;
+  margin: 10vw auto 0;
+  border-radius: 3px;
+  overflow: hidden;
+  &__wrapper{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 99999999;
+  }
+  &__header{
+    padding: 15px 30px;
+    background-color: #F2F2F2;
+    text-transform: uppercase;
+    color: $color-blue;
+  }
+  &__body{
+    padding: 10px 15px 0;
+    .ticket-info{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      .ticket-summary__body__divider{
+        display: none;
+      }
+    }
+  }
+  &__footer{
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 20px 30px 30px;
+    display: flex;
+    align-items: flex-end;
+    &__price{
+      color: $color-blue;
+      margin-right: auto;
+    }
+    &__reset{
+      color: $color-magenta;
+      font-size: 12px;
+      font-weight: bold;
+      text-decoration: underline;
+      cursor: pointer;
+      &:hover{
+        text-decoration: none;
+      }
+    }
+  }
 }
